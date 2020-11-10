@@ -1,0 +1,495 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		EDA8A58124A61478004B891F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA8A58024A61478004B891F /* AppDelegate.swift */; };
+		EDA8A58524A61478004B891F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA8A58424A61478004B891F /* ViewController.swift */; };
+		EDA8A58824A61478004B891F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDA8A58624A61478004B891F /* Main.storyboard */; };
+		EDA8A58A24A61482004B891F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EDA8A58924A61482004B891F /* Assets.xcassets */; };
+		EDA8A58D24A61482004B891F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDA8A58B24A61482004B891F /* LaunchScreen.storyboard */; };
+		EDA8A59524A614C8004B891F /* TemperatureIntents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = EDA8A59424A614C8004B891F /* TemperatureIntents.intentdefinition */; };
+		EDA8A5BE24A6304B004B891F /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA8A5BD24A6304B004B891F /* IntentHandler.swift */; };
+		EDA8A5C224A6304B004B891F /* Temperature Submission Intent.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = EDA8A5BB24A6304B004B891F /* Temperature Submission Intent.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		EDA8A5C724A6348F004B891F /* TemperatureIntents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = EDA8A59424A614C8004B891F /* TemperatureIntents.intentdefinition */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		EDA8A5C024A6304B004B891F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EDA8A57524A61478004B891F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EDA8A5BA24A6304B004B891F;
+			remoteInfo = "Temperature Submission Intent";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		EDA8A5C624A6304B004B891F /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				EDA8A5C224A6304B004B891F /* Temperature Submission Intent.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		EDA8A57D24A61478004B891F /* Temperature Submission.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Temperature Submission.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EDA8A58024A61478004B891F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		EDA8A58424A61478004B891F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		EDA8A58724A61478004B891F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		EDA8A58924A61482004B891F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		EDA8A58C24A61482004B891F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		EDA8A58E24A61482004B891F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EDA8A59424A614C8004B891F /* TemperatureIntents.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = TemperatureIntents.intentdefinition; sourceTree = "<group>"; };
+		EDA8A5B624A63005004B891F /* Temperature Submission.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Temperature Submission.entitlements"; sourceTree = "<group>"; };
+		EDA8A5BB24A6304B004B891F /* Temperature Submission Intent.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Temperature Submission Intent.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EDA8A5BD24A6304B004B891F /* IntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentHandler.swift; sourceTree = "<group>"; };
+		EDA8A5BF24A6304B004B891F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EDA8A57A24A61478004B891F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EDA8A5B824A6304B004B891F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		EDA8A57424A61478004B891F = {
+			isa = PBXGroup;
+			children = (
+				EDA8A59424A614C8004B891F /* TemperatureIntents.intentdefinition */,
+				EDA8A57F24A61478004B891F /* Temperature Submission */,
+				EDA8A5BC24A6304B004B891F /* Temperature Submission Intent */,
+				EDA8A57E24A61478004B891F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		EDA8A57E24A61478004B891F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EDA8A57D24A61478004B891F /* Temperature Submission.app */,
+				EDA8A5BB24A6304B004B891F /* Temperature Submission Intent.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EDA8A57F24A61478004B891F /* Temperature Submission */ = {
+			isa = PBXGroup;
+			children = (
+				EDA8A5B624A63005004B891F /* Temperature Submission.entitlements */,
+				EDA8A58024A61478004B891F /* AppDelegate.swift */,
+				EDA8A58424A61478004B891F /* ViewController.swift */,
+				EDA8A58624A61478004B891F /* Main.storyboard */,
+				EDA8A58924A61482004B891F /* Assets.xcassets */,
+				EDA8A58B24A61482004B891F /* LaunchScreen.storyboard */,
+				EDA8A58E24A61482004B891F /* Info.plist */,
+			);
+			path = "Temperature Submission";
+			sourceTree = "<group>";
+		};
+		EDA8A5BC24A6304B004B891F /* Temperature Submission Intent */ = {
+			isa = PBXGroup;
+			children = (
+				EDA8A5BD24A6304B004B891F /* IntentHandler.swift */,
+				EDA8A5BF24A6304B004B891F /* Info.plist */,
+			);
+			path = "Temperature Submission Intent";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EDA8A57C24A61478004B891F /* Temperature Submission */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EDA8A59124A61482004B891F /* Build configuration list for PBXNativeTarget "Temperature Submission" */;
+			buildPhases = (
+				EDA8A57924A61478004B891F /* Sources */,
+				EDA8A57A24A61478004B891F /* Frameworks */,
+				EDA8A57B24A61478004B891F /* Resources */,
+				EDA8A5C624A6304B004B891F /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EDA8A5C124A6304B004B891F /* PBXTargetDependency */,
+			);
+			name = "Temperature Submission";
+			productName = "Temperature Submission";
+			productReference = EDA8A57D24A61478004B891F /* Temperature Submission.app */;
+			productType = "com.apple.product-type.application";
+		};
+		EDA8A5BA24A6304B004B891F /* Temperature Submission Intent */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EDA8A5C324A6304B004B891F /* Build configuration list for PBXNativeTarget "Temperature Submission Intent" */;
+			buildPhases = (
+				EDA8A5B724A6304B004B891F /* Sources */,
+				EDA8A5B824A6304B004B891F /* Frameworks */,
+				EDA8A5B924A6304B004B891F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Temperature Submission Intent";
+			productName = "Temperature Submission Intent";
+			productReference = EDA8A5BB24A6304B004B891F /* Temperature Submission Intent.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EDA8A57524A61478004B891F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1150;
+				LastUpgradeCheck = 1150;
+				ORGANIZATIONNAME = "Wern Jie Lim";
+				TargetAttributes = {
+					EDA8A57C24A61478004B891F = {
+						CreatedOnToolsVersion = 11.5;
+					};
+					EDA8A5BA24A6304B004B891F = {
+						CreatedOnToolsVersion = 11.5;
+					};
+				};
+			};
+			buildConfigurationList = EDA8A57824A61478004B891F /* Build configuration list for PBXProject "Temperature Submission" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = EDA8A57424A61478004B891F;
+			productRefGroup = EDA8A57E24A61478004B891F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EDA8A57C24A61478004B891F /* Temperature Submission */,
+				EDA8A5BA24A6304B004B891F /* Temperature Submission Intent */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EDA8A57B24A61478004B891F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EDA8A58D24A61482004B891F /* LaunchScreen.storyboard in Resources */,
+				EDA8A58A24A61482004B891F /* Assets.xcassets in Resources */,
+				EDA8A58824A61478004B891F /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EDA8A5B924A6304B004B891F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EDA8A57924A61478004B891F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EDA8A58524A61478004B891F /* ViewController.swift in Sources */,
+				EDA8A58124A61478004B891F /* AppDelegate.swift in Sources */,
+				EDA8A59524A614C8004B891F /* TemperatureIntents.intentdefinition in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EDA8A5B724A6304B004B891F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EDA8A5BE24A6304B004B891F /* IntentHandler.swift in Sources */,
+				EDA8A5C724A6348F004B891F /* TemperatureIntents.intentdefinition in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		EDA8A5C124A6304B004B891F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EDA8A5BA24A6304B004B891F /* Temperature Submission Intent */;
+			targetProxy = EDA8A5C024A6304B004B891F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		EDA8A58624A61478004B891F /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EDA8A58724A61478004B891F /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		EDA8A58B24A61482004B891F /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EDA8A58C24A61482004B891F /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		EDA8A58F24A61482004B891F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		EDA8A59024A61482004B891F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		EDA8A59224A61482004B891F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Temperature Submission/Temperature Submission.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2MNM6PUQP4;
+				INFOPLIST_FILE = "Temperature Submission/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.limwernjie.Temperature-Submission";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		EDA8A59324A61482004B891F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Temperature Submission/Temperature Submission.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2MNM6PUQP4;
+				INFOPLIST_FILE = "Temperature Submission/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.limwernjie.Temperature-Submission";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		EDA8A5C424A6304B004B891F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2MNM6PUQP4;
+				INFOPLIST_FILE = "Temperature Submission Intent/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.limwernjie.Temperature-Submission.Temperature-Submission-Intent";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		EDA8A5C524A6304B004B891F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2MNM6PUQP4;
+				INFOPLIST_FILE = "Temperature Submission Intent/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.limwernjie.Temperature-Submission.Temperature-Submission-Intent";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EDA8A57824A61478004B891F /* Build configuration list for PBXProject "Temperature Submission" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EDA8A58F24A61482004B891F /* Debug */,
+				EDA8A59024A61482004B891F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EDA8A59124A61482004B891F /* Build configuration list for PBXNativeTarget "Temperature Submission" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EDA8A59224A61482004B891F /* Debug */,
+				EDA8A59324A61482004B891F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EDA8A5C324A6304B004B891F /* Build configuration list for PBXNativeTarget "Temperature Submission Intent" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EDA8A5C424A6304B004B891F /* Debug */,
+				EDA8A5C524A6304B004B891F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = EDA8A57524A61478004B891F /* Project object */;
+}
