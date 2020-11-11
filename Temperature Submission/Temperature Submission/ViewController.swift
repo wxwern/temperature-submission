@@ -196,8 +196,15 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate {
         homeVC = self
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if !AGREES_TERMS {
+            self.performSegue(withIdentifier: "showTerms", sender: self)
+        }
+    }
+    
     @IBAction func openWebpageOptions() {
-        let a = UIAlertController(title: "Webpage Options", message: "\(webView.url?.absoluteString ?? "")\n\nSelect an action:", preferredStyle: .alert)
+        let a = UIAlertController(title: "App Options", message: "\(webView.url?.absoluteString ?? "")\n\nSelect an action:", preferredStyle: .alert)
         a.addAction(UIAlertAction(title: "Refresh Webpage", style: .default, handler: { (action) in
             self.webView.reload()
         }))
@@ -209,6 +216,10 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate {
                 self.webView.load(URLRequest(url: URL(string: link)!))
             }))
         }
+        a.addAction(UIAlertAction(title: "Show Terms of Use", style: .default, handler: { (action) in
+            self.performSegue(withIdentifier: "showTerms", sender: self)
+        }))
+        
         a.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
         self.present(a, animated: false, completion: nil)
     }
@@ -276,6 +287,12 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate {
     
     func performAutoSubmission(url: String? = nil, temp: String, completion: ((Bool) -> ())? = nil) {
         
+        if !AGREES_TERMS {
+            postNotification(message: "You do not agree to the Terms of Use for the app.", title: "Submission FAILED!")
+            completion?(false)
+            return
+        }
+        
         let url = url ?? TARGET_LINK_1
         webView.load(URLRequest(url: URL(string: url)!))
         
@@ -302,7 +319,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate {
         }
         if !valid {
             _ = self.alert("Failed", "Invalid temperature \(temp)")
-            postNotification(message: "\(temp)°C is not a valid temperature.", title: "Invalid temperature")
+            postNotification(message: "\(temp)°C is not a valid temperature.", title: "Submission FAILED!")
             completion?(false)
             return
         }
@@ -315,10 +332,10 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate {
         }
         
         //Now we start the good stuff
-        let AUTO = "Auto Submitting... (" + temp + ")"
-        let AUTO_DONE = "Auto Submitted! (" + temp + ")"
-        let MANU = "Manual Submission"
-        let FAIL = "Auto Submission Failed"
+        let AUTO = (DEBUG ? "[DEBUG] " : "") + "Auto Submitting... (" + temp + ")"
+        let AUTO_DONE = (DEBUG ? "[DEBUG] " : "") + "Auto Submitted! (" + temp + ")"
+        let MANU = (DEBUG ? "[DEBUG] " : "") + "Manual Submission"
+        let FAIL = (DEBUG ? "[DEBUG] " : "") + "Auto Submission Failed"
         
         let EXEC_DESC = urlDesc[url]!
         var EXEC_JS = scripts[url]!

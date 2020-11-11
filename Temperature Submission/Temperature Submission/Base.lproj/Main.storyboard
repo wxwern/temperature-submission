@@ -91,11 +91,72 @@
                         <outlet property="infoStackView" destination="K7I-2o-Y4I" id="oZC-Vl-wep"/>
                         <outlet property="webView" destination="orL-dr-Iat" id="rWn-mC-Nmw"/>
                         <outlet property="webpageOptionsButton" destination="VcQ-S8-NwE" id="iWT-0H-0YW"/>
+                        <segue destination="oER-kj-jvJ" kind="presentation" identifier="showTerms" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="MKy-Y4-g8V"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="123.88392857142857"/>
+        </scene>
+        <!--Terms View Controller-->
+        <scene sceneID="Jeo-Kx-Tem">
+            <objects>
+                <viewController id="oER-kj-jvJ" customClass="TermsViewController" customModule="Temperature_Submission" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="aDt-d9-Th4">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Placeholder" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="831-E1-tND">
+                                <rect key="frame" x="8" y="132" width="398" height="658"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Terms (x/4)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UyG-Nf-8uA">
+                                <rect key="frame" x="8" y="52" width="398" height="72"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="72" id="5wI-c2-m2R"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9FH-o6-tss">
+                                <rect key="frame" x="8" y="798" width="398" height="72"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="72" id="EWI-ep-Il3"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                <state key="normal" title="I Agree"/>
+                                <connections>
+                                    <action selector="agreeButtonPressed" destination="oER-kj-jvJ" eventType="touchUpInside" id="pmS-V5-opC"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="bbA-ye-To0"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="UyG-Nf-8uA" firstAttribute="leading" secondItem="bbA-ye-To0" secondAttribute="leading" constant="8" id="0zQ-qV-SDj"/>
+                            <constraint firstItem="9FH-o6-tss" firstAttribute="bottom" secondItem="bbA-ye-To0" secondAttribute="bottom" constant="8" id="8tU-I0-wIe"/>
+                            <constraint firstItem="bbA-ye-To0" firstAttribute="trailing" secondItem="9FH-o6-tss" secondAttribute="trailing" constant="8" id="9CS-sH-e8H"/>
+                            <constraint firstItem="bbA-ye-To0" firstAttribute="trailing" secondItem="UyG-Nf-8uA" secondAttribute="trailing" constant="8" id="dRG-jj-jZB"/>
+                            <constraint firstItem="UyG-Nf-8uA" firstAttribute="top" secondItem="bbA-ye-To0" secondAttribute="top" constant="8" id="gN2-4I-vPj"/>
+                            <constraint firstItem="9FH-o6-tss" firstAttribute="top" secondItem="831-E1-tND" secondAttribute="bottom" constant="8" id="n6n-Tp-Z3c"/>
+                            <constraint firstItem="831-E1-tND" firstAttribute="top" secondItem="UyG-Nf-8uA" secondAttribute="bottom" constant="8" id="rAN-Cm-bVm"/>
+                            <constraint firstItem="9FH-o6-tss" firstAttribute="leading" secondItem="bbA-ye-To0" secondAttribute="leading" constant="8" id="rWT-8C-Ab8"/>
+                            <constraint firstItem="831-E1-tND" firstAttribute="leading" secondItem="bbA-ye-To0" secondAttribute="leading" constant="8" id="xNQ-4w-iSh"/>
+                            <constraint firstItem="bbA-ye-To0" firstAttribute="trailing" secondItem="831-E1-tND" secondAttribute="trailing" constant="8" id="xPt-9y-arL"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="agreeButton" destination="9FH-o6-tss" id="2Hr-zt-P7X"/>
+                        <outlet property="headingLabel" destination="UyG-Nf-8uA" id="Ptr-3i-Rie"/>
+                        <outlet property="textLabel" destination="831-E1-tND" id="6AM-1C-ghS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QXP-Gm-Iqt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="908.69565217391312" y="123.88392857142857"/>
         </scene>
     </scenes>
     <resources>

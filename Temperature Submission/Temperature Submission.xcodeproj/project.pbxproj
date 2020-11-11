@@ -16,6 +16,7 @@
 		EDA8A5BE24A6304B004B891F /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA8A5BD24A6304B004B891F /* IntentHandler.swift */; };
 		EDA8A5C224A6304B004B891F /* Temperature Submission Intent.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = EDA8A5BB24A6304B004B891F /* Temperature Submission Intent.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		EDA8A5C724A6348F004B891F /* TemperatureIntents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = EDA8A59424A614C8004B891F /* TemperatureIntents.intentdefinition */; };
+		EDB3B2AB255B7E8E00F0F866 /* TermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB3B2AA255B7E8E00F0F866 /* TermsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		EDA8A5BB24A6304B004B891F /* Temperature Submission Intent.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Temperature Submission Intent.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDA8A5BD24A6304B004B891F /* IntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentHandler.swift; sourceTree = "<group>"; };
 		EDA8A5BF24A6304B004B891F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EDB3B2AA255B7E8E00F0F866 /* TermsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 				EDA8A5B624A63005004B891F /* Temperature Submission.entitlements */,
 				EDA8A58024A61478004B891F /* AppDelegate.swift */,
 				EDA8A58424A61478004B891F /* ViewController.swift */,
+				EDB3B2AA255B7E8E00F0F866 /* TermsViewController.swift */,
 				EDA8A58624A61478004B891F /* Main.storyboard */,
 				EDA8A58924A61482004B891F /* Assets.xcassets */,
 				EDA8A58B24A61482004B891F /* LaunchScreen.storyboard */,
@@ -220,6 +223,7 @@
 			files = (
 				EDA8A58524A61478004B891F /* ViewController.swift in Sources */,
 				EDA8A58124A61478004B891F /* AppDelegate.swift in Sources */,
+				EDB3B2AB255B7E8E00F0F866 /* TermsViewController.swift in Sources */,
 				EDA8A59524A614C8004B891F /* TemperatureIntents.intentdefinition in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -394,7 +398,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.limwernjie.Temperature-Submission";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -415,7 +419,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.limwernjie.Temperature-Submission";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
