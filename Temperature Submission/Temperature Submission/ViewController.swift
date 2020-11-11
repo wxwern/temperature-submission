@@ -183,7 +183,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate {
         addToSiriButton.delegate = self
         infoStackView.addArrangedSubview(addToSiriButton)
         
-        webView.layer.cornerRadius = 10
+        webView.layer.cornerRadius = 16
         webView.clipsToBounds = true
         
         // Load web view

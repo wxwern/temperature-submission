@@ -17,7 +17,7 @@ It's simple:
 - Allow notifications.
 - Read and agree to the Terms of Use.
 - Sign in to your school Microsoft account within the app.
-- Tap 'Add to Siri' within the app and tap 'Save Shortcut'.
+- Tap 'Add to Siri' within the app, and confirm to do so.
 - You're ready to use it!
 
 The school temperature submission only occurs under specific criteria that the app detects, as the form itself has no special handling of allowed submission times. Please modify the code accordingly depending on what're the dates you need to submit.
