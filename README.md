@@ -3,7 +3,7 @@
   <p>
     An app allowing for <strong>semi-automated temperature submissions</strong> via <strong>Siri voice commands</strong>
   </p>
-  <img src="demo.gif" alt="preview footage" width="240" height="111">
+  <img src="demo.gif" alt="preview footage" width="240" height="520">
 </div>
 
 ---
