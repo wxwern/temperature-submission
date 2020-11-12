@@ -1,16 +1,22 @@
-# Temperature Submission app
+<div align="center">
+  <h1>Temperature Submission feat. Siri</h1>
+  <p>
+    An app allowing for <strong>semi-automated temperature submissions</strong> via <strong>Siri voice commands</strong>
+  </p>
+  <img src="demo.gif" alt="preview footage" width="240">
+</div>
+
+---
 
 Too lazy to press tons of buttons in order to submit your temperature to multiple places?
 
-Let's simplify it to a single Siri voice command!
-
-Now, you can simply tell Siri your body temperature, and Siri will help submit it for you.
+Fret not! Now, you can simply tell Siri your body temperature, and Siri will help submit it for you.
 
 Designed for lazy NUS High students also living in boarding, submitting temperatures to both school and boarding daily.
 
 ## Configuration
 
-It's simple:
+It's relatively straightforward:
 
 - Compile and install the app on your iPhone, making sure to switch to your own developer account for app signing.
 - Run the app.
