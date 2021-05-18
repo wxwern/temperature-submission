@@ -23,6 +23,7 @@ It's relatively straightforward:
 - Allow notifications.
 - Read and agree to the Terms of Use.
 - Sign in to your school Microsoft account within the app.
+- Tap the three dots (•••) at the top and select "Show 'Add to Siri' button".
 - Tap 'Add to Siri' within the app, and confirm to do so.
 - You're ready to use it!
 
@@ -52,6 +53,7 @@ Profit!
 - You aren't faking your temperature as part of the automation (as you must tell Siri your real reading).
 - Works in the background after initial launch, so don't worry if you exit the app midway. Even if otherwise, a notification will let you know temperature submission has failed.
 - Works with Siri Shortcuts: Combine other automations with this app (such as SG TraceTogether's Siri Shortcuts for SafeEntry), or even use a scheduled time-based Shortcuts automation to trigger it.
+- Can't use Siri? Tap the "Manual Submission" label at the bottom of the app to launch a prompt to key in your temperature and submit. No need to waste time pressing the other checkboxes in the form.
 
 ## Terms of Use
 
