@@ -59,6 +59,7 @@
 		EDA8A5BF24A6304B004B891F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EDB3B2AA255B7E8E00F0F866 /* TermsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsViewController.swift; sourceTree = "<group>"; };
 		EDB3B2B1255B921800F0F866 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/PrivateFrameworks/WebKit.framework; sourceTree = SDKROOT; };
+		EDC40DF22613438E00A27F38 /* Temperature Submission Intent.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Temperature Submission Intent.entitlements"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +119,7 @@
 		EDA8A5BC24A6304B004B891F /* Temperature Submission Intent */ = {
 			isa = PBXGroup;
 			children = (
+				EDC40DF22613438E00A27F38 /* Temperature Submission Intent.entitlements */,
 				EDA8A5BD24A6304B004B891F /* IntentHandler.swift */,
 				EDA8A5BF24A6304B004B891F /* Info.plist */,
 			);
@@ -178,7 +180,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1150;
-				LastUpgradeCheck = 1150;
+				LastUpgradeCheck = 1240;
 				ORGANIZATIONNAME = "Wern Jie Lim";
 				TargetAttributes = {
 					EDA8A57C24A61478004B891F = {
@@ -305,6 +307,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -329,7 +332,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -365,6 +368,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -383,7 +387,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -402,19 +406,20 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2MNM6PUQP4;
 				INFOPLIST_FILE = "Temperature Submission/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.limwernjie.Temperature-Submission";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				SYSTEM_FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SDKROOT)$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks",
 				);
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -427,25 +432,27 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2MNM6PUQP4;
 				INFOPLIST_FILE = "Temperature Submission/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.limwernjie.Temperature-Submission";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				SYSTEM_FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SDKROOT)$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks",
 				);
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
 		EDA8A5C424A6304B004B891F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "Temperature Submission Intent/Temperature Submission Intent.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2MNM6PUQP4;
 				INFOPLIST_FILE = "Temperature Submission Intent/Info.plist";
@@ -458,6 +465,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.limwernjie.Temperature-Submission.Temperature-Submission-Intent";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -466,6 +474,7 @@
 		EDA8A5C524A6304B004B891F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "Temperature Submission Intent/Temperature Submission Intent.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2MNM6PUQP4;
 				INFOPLIST_FILE = "Temperature Submission Intent/Info.plist";
@@ -478,6 +487,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.limwernjie.Temperature-Submission.Temperature-Submission-Intent";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

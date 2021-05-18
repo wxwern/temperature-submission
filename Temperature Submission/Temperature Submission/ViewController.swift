@@ -12,7 +12,7 @@ import AVFoundation
 import IntentsUI
 
 var homeVC: ViewController?
-class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate {
+class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITextFieldDelegate {
 
     let DEBUG = false
     
@@ -163,6 +163,9 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate {
         return intent
     }
     
+    var addToSiriButton: INUIAddVoiceShortcutButton?
+    
+    @IBOutlet var bottomHeightConstraint: NSLayoutConstraint!
     @IBOutlet var infoStackView: UIStackView!
     @IBOutlet var infoLabel: UILabel!
     @IBOutlet var webpageOptionsButton: UIButton!
@@ -178,10 +181,14 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate {
         webpageOptionsButton.layer.cornerRadius = 22
         webpageOptionsButton.clipsToBounds = true
         
-        let addToSiriButton = INUIAddVoiceShortcutButton(style: .automaticOutline)
-        addToSiriButton.shortcut = INShortcut(intent: intent)
-        addToSiriButton.delegate = self
-        infoStackView.addArrangedSubview(addToSiriButton)
+        if #available(iOS 13.0, *) {
+            addToSiriButton = INUIAddVoiceShortcutButton(style: .automaticOutline)
+            addToSiriButton!.shortcut = INShortcut(intent: intent)
+            addToSiriButton!.delegate = self
+            addToSiriButton!.isHidden = true
+            infoStackView.addArrangedSubview(addToSiriButton!)
+        }
+        bottomHeightConstraint.constant = 80
         
         webView.layer.cornerRadius = 16
         webView.clipsToBounds = true
@@ -203,6 +210,49 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate {
         }
     }
     
+    var manualSubmitPromptAlert: UIAlertController?
+    @IBAction func promptSubmit() {
+        let a = UIAlertController(title: "Submit Temperature", message: "Key in temperature to try to submit now.", preferredStyle: .alert)
+        var t: UITextField?
+        a.addTextField { (textField) in
+            textField.placeholder = "36.9"
+            textField.keyboardType = .decimalPad
+            textField.delegate = self
+            t = textField
+        }
+        a.addAction(UIAlertAction(title: "Submit", style: .default, handler: { (action) in
+            if let t = t?.text {
+                self.performAutoSubmissionAll(temp: t)
+            }
+            self.manualSubmitPromptAlert = nil
+        }))
+        a.addAction(UIAlertAction(title: "Not Now", style: .cancel, handler: { (action) in
+            self.manualSubmitPromptAlert = nil
+        }))
+        manualSubmitPromptAlert = a
+        self.present(a, animated: true, completion: nil)
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if Int(string) == nil && string != "." {
+            return false
+        }
+        return true
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        if manualSubmitPromptAlert?.textFields?.first == textField {
+            if let t = textField.text {
+                self.performAutoSubmissionAll(temp: t)
+                self.manualSubmitPromptAlert?.dismiss(animated: true, completion: {
+                    self.manualSubmitPromptAlert = nil
+                })
+            }
+        }
+        return true
+    }
+    
     @IBAction func openWebpageOptions() {
         let a = UIAlertController(title: "App Options", message: "\(webView.url?.absoluteString ?? "")\n\nSelect an action:", preferredStyle: .alert)
         a.addAction(UIAlertAction(title: "Refresh Webpage", style: .default, handler: { (action) in
@@ -216,6 +266,16 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate {
                 self.webView.load(URLRequest(url: URL(string: link)!))
             }))
         }
+        
+        #if !targetEnvironment(macCatalyst)
+        if self.addToSiriButton?.isHidden == true {
+            a.addAction(UIAlertAction(title: "Show 'Add to Siri' button", style: .default, handler: { (action) in
+                self.addToSiriButton?.isHidden = false
+                self.bottomHeightConstraint.constant = 128
+            }))
+        }
+        #endif
+        
         a.addAction(UIAlertAction(title: "Show Terms of Use", style: .default, handler: { (action) in
             self.performSegue(withIdentifier: "showTerms", sender: self)
         }))
@@ -252,6 +312,8 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate {
                 }
                 
                 self.waitForKeyword(keyword, timeout: timeout - 1, completion: completion)
+         
+            
             }
         }
     }
@@ -262,8 +324,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate {
         self.present(a, animated: true, completion: nil)
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
-            a.dismiss(animated: true, completion: nil)
-        }
+               }
         return a
     }
     
@@ -278,7 +339,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate {
                 let d = calendar.component(.day, from: date)
                 let h = calendar.component(.hour, from: date)
                 
-                if y == 2020 && m == 11 && h < 12 && ([12,13,16,17,18,19,20].contains(d) || self.DEBUG) {
+                if y == 2021 && m == 5 && h < 12 && ([19,20,21,24,25,27,28].contains(d) || self.DEBUG) {
                     self.performAutoSubmission(url: self.TARGET_LINK_2, temp: temp)
                 }
             }
@@ -288,7 +349,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate {
     func performAutoSubmission(url: String? = nil, temp: String, completion: ((Bool) -> ())? = nil) {
         
         if !AGREES_TERMS {
-            postNotification(message: "You do not agree to the Terms of Use for the app.", title: "Submission FAILED!")
+            postNotification(message: "You do not agree to the Terms of Use for the app.", title: "Submission FAILED!", critical: true)
             completion?(false)
             return
         }
@@ -319,14 +380,14 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate {
         }
         if !valid {
             _ = self.alert("Failed", "Invalid temperature \(temp)")
-            postNotification(message: "\(temp)°C is not a valid temperature.", title: "Submission FAILED!")
+            postNotification(message: "\(temp)°C is not a valid temperature.", title: "Submission FAILED!", critical: true)
             completion?(false)
             return
         }
         
         //prepare to run in the background
         let bgTask = UIApplication.shared.beginBackgroundTask {
-            postNotification(message: "Unable to run in the background for long enough.", title: "Submission FAILED!")
+            postNotification(message: "Unable to run in the background for long enough.", title: "Submission FAILED!", critical: true)
             UIApplication.shared.isIdleTimerDisabled = false
             abort()
         }
@@ -354,7 +415,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate {
                     print("aaaaaaaaa")
                     _ = self.alert("Failed", "We can't load the form.")
                     clearNotifications(id: "IN_PROGRESS_NOTIF")
-                    postNotification(message: "The form couldn't be loaded.", title: "Submission to \(EXEC_DESC) FAILED!", count: 1)
+                    postNotification(message: "The form couldn't be loaded.", title: "Submission to \(EXEC_DESC) FAILED!", count: 1, critical: true)
                     self.infoLabel.text = FAIL
                     UIApplication.shared.isIdleTimerDisabled = false
                     completion?(false)
@@ -368,7 +429,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate {
                         print("aaaaaaaaa")
                         _ = self.alert("Failed", "Couldn't inject.\n\n\(err)")
                         clearNotifications(id: "IN_PROGRESS_NOTIF")
-                        postNotification(message: "There was a JavaScript error during injection:\n\(err)", title: "Submission to \(EXEC_DESC) FAILED!", count: 1)
+                        postNotification(message: "There was a JavaScript error during injection:\n\(err)", title: "Submission to \(EXEC_DESC) FAILED!", count: 1, critical: true)
                         self.infoLabel.text = FAIL
                         UIApplication.shared.isIdleTimerDisabled = false
                         completion?(false)
@@ -393,7 +454,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate {
                             print("aaaaaaaaa")
                             _ = self.alert("Failed", "Didn't see the 'Thanks!' remark.")
                             clearNotifications(id: "IN_PROGRESS_NOTIF")
-                            postNotification(message: "We couldn't auto-detect the 'Thanks!' keyword in the form.", title: "Submission to \(EXEC_DESC) FAILED!", count: 1)
+                            postNotification(message: "We couldn't auto-detect the 'Thanks!' keyword in the form.", title: "Submission to \(EXEC_DESC) FAILED!", count: 1, critical: true)
                             self.infoLabel.text = FAIL
                             completion?(false)
                         }

@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        UNUserNotificationCenter.current().requestAuthorization(options: [.badge,.sound,.alert]) { (authorised, err) in
+        UNUserNotificationCenter.current().requestAuthorization(options: [.badge,.sound,.alert,.criticalAlert]) { (authorised, err) in
         }
         UNUserNotificationCenter.current().delegate = self
         clearNotifications()
@@ -52,13 +52,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     
 }
 
-func postNotification(message: String, title: String, timeInterval: TimeInterval = 0.5, count: Int = 0, id: String? = nil) {
+func postNotification(message: String, title: String, timeInterval: TimeInterval = 0.5, count: Int = 0, critical: Bool = false, id: String? = nil) {
     //creating the notification content
     let content = UNMutableNotificationContent()
     content.title = title
     content.subtitle = ""
     content.body = message
     content.badge = count as NSNumber
+    
+    //Attempt to play critical sound if possible. Requires critical alert entitlement from Apple to work.
+    if critical {
+        content.sound = .defaultCriticalSound(withAudioVolume: 1.0)
+    }
+    
     //getting the notification trigger
     let trigger = UNTimeIntervalNotificationTrigger(timeInterval: timeInterval, repeats: false)
     //getting the notification request
