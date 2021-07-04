@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ObA-dk-sSI">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Intent View Controller-->
+        <scene sceneID="7MM-of-jgj">
+            <objects>
+                <viewController id="ObA-dk-sSI" customClass="IntentViewController" customModule="Temperature_Submission_IntentUI" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zMn-AG-sqS">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="150"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="vXF-fI-QHM">
+                                <rect key="frame" x="150" y="65" width="20" height="20"/>
+                            </activityIndicatorView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vHw-d9-Cfz">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="150"/>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="4PN-XC-lEE"/>
+                        <constraints>
+                            <constraint firstItem="vHw-d9-Cfz" firstAttribute="top" secondItem="zMn-AG-sqS" secondAttribute="top" id="A6o-JW-2Fb"/>
+                            <constraint firstItem="4PN-XC-lEE" firstAttribute="bottom" secondItem="vHw-d9-Cfz" secondAttribute="bottom" id="YXt-Je-zsV"/>
+                            <constraint firstItem="vHw-d9-Cfz" firstAttribute="leading" secondItem="4PN-XC-lEE" secondAttribute="leading" id="cSQ-Y1-KL1"/>
+                            <constraint firstItem="vXF-fI-QHM" firstAttribute="centerY" secondItem="zMn-AG-sqS" secondAttribute="centerY" id="lo4-t2-94u"/>
+                            <constraint firstItem="4PN-XC-lEE" firstAttribute="trailing" secondItem="vHw-d9-Cfz" secondAttribute="trailing" id="ob1-bq-bBW"/>
+                            <constraint firstItem="vXF-fI-QHM" firstAttribute="centerX" secondItem="zMn-AG-sqS" secondAttribute="centerX" id="usN-9k-Bcy"/>
+                        </constraints>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="150"/>
+                    <connections>
+                        <outlet property="imageView" destination="vHw-d9-Cfz" id="xK2-6b-8M8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="X47-rx-isc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="132" y="95"/>
+        </scene>
+    </scenes>
+</document>

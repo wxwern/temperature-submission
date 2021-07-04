@@ -32,7 +32,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             if let tempStr = temp?.stringValue {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                     if let vc = homeVC {
-                        vc.performAutoSubmissionAll(temp: tempStr)
+                        if vc.webViewInjector?.submitting == false {
+                            vc.webViewInjector?.performAutoSubmissionAll(temp: tempStr)
+                        } else {
+                            vc.showSubmissionSnapshot()
+                        }
                     }
                 }
             }

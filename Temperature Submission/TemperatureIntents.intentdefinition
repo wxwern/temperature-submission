@@ -9,11 +9,11 @@
 	<key>INIntentDefinitionNamespace</key>
 	<string>dBI3tB</string>
 	<key>INIntentDefinitionSystemVersion</key>
-	<string>19H15</string>
+	<string>20F71</string>
 	<key>INIntentDefinitionToolsBuildVersion</key>
-	<string>12A7403</string>
+	<string>12E507</string>
 	<key>INIntentDefinitionToolsVersion</key>
-	<string>12.1</string>
+	<string>12.5.1</string>
 	<key>INIntents</key>
 	<array>
 		<dict>
@@ -25,8 +25,6 @@
 			<string>Submit body temperature readings semi-automatically</string>
 			<key>INIntentDescriptionID</key>
 			<string>PQ0WlB</string>
-			<key>INIntentIneligibleForSuggestions</key>
-			<true/>
 			<key>INIntentLastParameterTag</key>
 			<integer>3</integer>
 			<key>INIntentManagedParameterCombinations</key>
@@ -45,6 +43,31 @@
 			</dict>
 			<key>INIntentName</key>
 			<string>SubmitTemperature</string>
+			<key>INIntentParameterCombinations</key>
+			<dict>
+				<key></key>
+				<dict>
+					<key>INIntentParameterCombinationSupportsBackgroundExecution</key>
+					<true/>
+					<key>INIntentParameterCombinationTitle</key>
+					<string>Submit body temperature</string>
+					<key>INIntentParameterCombinationTitleID</key>
+					<string>tj1Cii</string>
+				</dict>
+				<key>temperature</key>
+				<dict>
+					<key>INIntentParameterCombinationIsLinked</key>
+					<true/>
+					<key>INIntentParameterCombinationIsPrimary</key>
+					<true/>
+					<key>INIntentParameterCombinationSupportsBackgroundExecution</key>
+					<true/>
+					<key>INIntentParameterCombinationTitle</key>
+					<string>Submit body temperature of ${temperature}°C</string>
+					<key>INIntentParameterCombinationTitleID</key>
+					<string>yewxai</string>
+				</dict>
+			</dict>
 			<key>INIntentParameters</key>
 			<array>
 				<dict>
@@ -144,8 +167,12 @@
 				<key>INIntentResponseCodes</key>
 				<array>
 					<dict>
+						<key>INIntentResponseCodeConciseFormatString</key>
+						<string>Submission successful: ${temperature}°C </string>
+						<key>INIntentResponseCodeConciseFormatStringID</key>
+						<string>jzjEUI</string>
 						<key>INIntentResponseCodeFormatString</key>
-						<string>Submission successful.</string>
+						<string>Successfully submitted temperature reading of ${temperature}°C </string>
 						<key>INIntentResponseCodeFormatStringID</key>
 						<string>bhD48C</string>
 						<key>INIntentResponseCodeName</key>
@@ -154,12 +181,87 @@
 						<true/>
 					</dict>
 					<dict>
-						<key>INIntentResponseCodeFormatString</key>
+						<key>INIntentResponseCodeConciseFormatString</key>
 						<string>Submission failed.</string>
+						<key>INIntentResponseCodeConciseFormatStringID</key>
+						<string>hI6x2A</string>
+						<key>INIntentResponseCodeFormatString</key>
+						<string>Temperature submission failed. Unknown error occured.</string>
 						<key>INIntentResponseCodeFormatStringID</key>
 						<string>091MDk</string>
 						<key>INIntentResponseCodeName</key>
 						<string>failure</string>
+					</dict>
+					<dict>
+						<key>INIntentResponseCodeConciseFormatString</key>
+						<string>Failed: Terms of Use are not agreed to.</string>
+						<key>INIntentResponseCodeConciseFormatStringID</key>
+						<string>EOGKZn</string>
+						<key>INIntentResponseCodeFormatString</key>
+						<string>Could not submit your temperature as you did not agree to the Terms of Use. Please launch the app to do so.</string>
+						<key>INIntentResponseCodeFormatStringID</key>
+						<string>o9R9rl</string>
+						<key>INIntentResponseCodeName</key>
+						<string>failureTerms</string>
+					</dict>
+					<dict>
+						<key>INIntentResponseCodeConciseFormatString</key>
+						<string>Failed: Form is Closed</string>
+						<key>INIntentResponseCodeConciseFormatStringID</key>
+						<string>eYI3c7</string>
+						<key>INIntentResponseCodeFormatString</key>
+						<string>Temperature submission failed. The form appears to be closed or not accessible.</string>
+						<key>INIntentResponseCodeFormatStringID</key>
+						<string>2McozZ</string>
+						<key>INIntentResponseCodeName</key>
+						<string>failureFormClosed</string>
+					</dict>
+					<dict>
+						<key>INIntentResponseCodeConciseFormatString</key>
+						<string>Failed: Unable to load form.</string>
+						<key>INIntentResponseCodeConciseFormatStringID</key>
+						<string>hMkmuJ</string>
+						<key>INIntentResponseCodeFormatString</key>
+						<string>Temperature submission failed. The form cannot be loaded.</string>
+						<key>INIntentResponseCodeFormatStringID</key>
+						<string>WZGi2L</string>
+						<key>INIntentResponseCodeName</key>
+						<string>failureUnableToLoad</string>
+					</dict>
+					<dict>
+						<key>INIntentResponseCodeConciseFormatString</key>
+						<string>Submitting temperature: ${temperature}°C </string>
+						<key>INIntentResponseCodeConciseFormatStringID</key>
+						<string>Ve15Yg</string>
+						<key>INIntentResponseCodeFormatString</key>
+						<string>Submitting ${temperature}°C.</string>
+						<key>INIntentResponseCodeFormatStringID</key>
+						<string>TX7PNu</string>
+						<key>INIntentResponseCodeName</key>
+						<string>successInProgress</string>
+						<key>INIntentResponseCodeSuccess</key>
+						<true/>
+					</dict>
+				</array>
+				<key>INIntentResponseLastParameterTag</key>
+				<integer>2</integer>
+				<key>INIntentResponseOutput</key>
+				<string>temperature</string>
+				<key>INIntentResponseParameters</key>
+				<array>
+					<dict>
+						<key>INIntentResponseParameterDisplayName</key>
+						<string>temperature</string>
+						<key>INIntentResponseParameterDisplayNameID</key>
+						<string>1hDh4v</string>
+						<key>INIntentResponseParameterDisplayPriority</key>
+						<integer>1</integer>
+						<key>INIntentResponseParameterName</key>
+						<string>temperature</string>
+						<key>INIntentResponseParameterTag</key>
+						<integer>2</integer>
+						<key>INIntentResponseParameterType</key>
+						<string>Decimal</string>
 					</dict>
 				</array>
 			</dict>

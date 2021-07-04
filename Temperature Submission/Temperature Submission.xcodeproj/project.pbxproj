@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ED7095452691684300E78CC9 /* IntentsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED7095302691680A00E78CC9 /* IntentsUI.framework */; };
+		ED7095482691684300E78CC9 /* IntentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7095472691684300E78CC9 /* IntentViewController.swift */; };
+		ED70954B2691684300E78CC9 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED7095492691684300E78CC9 /* MainInterface.storyboard */; };
+		ED70954F2691684300E78CC9 /* Temperature Submission IntentUI.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = ED7095442691684300E78CC9 /* Temperature Submission IntentUI.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		ED7095552691693700E78CC9 /* WebViewInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7095542691693700E78CC9 /* WebViewInjector.swift */; };
+		ED7095562691693700E78CC9 /* WebViewInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7095542691693700E78CC9 /* WebViewInjector.swift */; };
+		ED7095572691693700E78CC9 /* WebViewInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7095542691693700E78CC9 /* WebViewInjector.swift */; };
+		ED7095592691B83A00E78CC9 /* SnapshotsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7095582691B83A00E78CC9 /* SnapshotsViewController.swift */; };
 		EDA8A58124A61478004B891F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA8A58024A61478004B891F /* AppDelegate.swift */; };
 		EDA8A58524A61478004B891F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA8A58424A61478004B891F /* ViewController.swift */; };
 		EDA8A58824A61478004B891F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDA8A58624A61478004B891F /* Main.storyboard */; };
@@ -21,6 +29,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		ED70954D2691684300E78CC9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EDA8A57524A61478004B891F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = ED7095432691684300E78CC9;
+			remoteInfo = "Temperature Submission IntentUI";
+		};
 		EDA8A5C024A6304B004B891F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = EDA8A57524A61478004B891F /* Project object */;
@@ -38,6 +53,7 @@
 			dstSubfolderSpec = 13;
 			files = (
 				EDA8A5C224A6304B004B891F /* Temperature Submission Intent.appex in Embed App Extensions */,
+				ED70954F2691684300E78CC9 /* Temperature Submission IntentUI.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -45,6 +61,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		ED7095302691680A00E78CC9 /* IntentsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IntentsUI.framework; path = System/Library/Frameworks/IntentsUI.framework; sourceTree = SDKROOT; };
+		ED7095442691684300E78CC9 /* Temperature Submission IntentUI.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Temperature Submission IntentUI.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED7095472691684300E78CC9 /* IntentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentViewController.swift; sourceTree = "<group>"; };
+		ED70954A2691684300E78CC9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		ED70954C2691684300E78CC9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ED7095502691684300E78CC9 /* Temperature Submission IntentUI.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Temperature Submission IntentUI.entitlements"; sourceTree = "<group>"; };
+		ED7095542691693700E78CC9 /* WebViewInjector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewInjector.swift; sourceTree = "<group>"; };
+		ED7095582691B83A00E78CC9 /* SnapshotsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotsViewController.swift; sourceTree = "<group>"; };
 		EDA8A57D24A61478004B891F /* Temperature Submission.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Temperature Submission.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDA8A58024A61478004B891F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EDA8A58424A61478004B891F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -63,6 +87,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		ED7095412691684300E78CC9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ED7095452691684300E78CC9 /* IntentsUI.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EDA8A57A24A61478004B891F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -81,12 +113,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		ED7095462691684300E78CC9 /* Temperature Submission IntentUI */ = {
+			isa = PBXGroup;
+			children = (
+				ED7095502691684300E78CC9 /* Temperature Submission IntentUI.entitlements */,
+				ED7095472691684300E78CC9 /* IntentViewController.swift */,
+				ED7095492691684300E78CC9 /* MainInterface.storyboard */,
+				ED70954C2691684300E78CC9 /* Info.plist */,
+			);
+			path = "Temperature Submission IntentUI";
+			sourceTree = "<group>";
+		};
 		EDA8A57424A61478004B891F = {
 			isa = PBXGroup;
 			children = (
 				EDA8A59424A614C8004B891F /* TemperatureIntents.intentdefinition */,
+				ED7095542691693700E78CC9 /* WebViewInjector.swift */,
 				EDA8A57F24A61478004B891F /* Temperature Submission */,
 				EDA8A5BC24A6304B004B891F /* Temperature Submission Intent */,
+				ED7095462691684300E78CC9 /* Temperature Submission IntentUI */,
 				EDA8A57E24A61478004B891F /* Products */,
 				EDB3B2B0255B921700F0F866 /* Frameworks */,
 			);
@@ -97,6 +142,7 @@
 			children = (
 				EDA8A57D24A61478004B891F /* Temperature Submission.app */,
 				EDA8A5BB24A6304B004B891F /* Temperature Submission Intent.appex */,
+				ED7095442691684300E78CC9 /* Temperature Submission IntentUI.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -107,6 +153,7 @@
 				EDA8A5B624A63005004B891F /* Temperature Submission.entitlements */,
 				EDA8A58024A61478004B891F /* AppDelegate.swift */,
 				EDA8A58424A61478004B891F /* ViewController.swift */,
+				ED7095582691B83A00E78CC9 /* SnapshotsViewController.swift */,
 				EDB3B2AA255B7E8E00F0F866 /* TermsViewController.swift */,
 				EDA8A58624A61478004B891F /* Main.storyboard */,
 				EDA8A58924A61482004B891F /* Assets.xcassets */,
@@ -130,6 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				EDB3B2B1255B921800F0F866 /* WebKit.framework */,
+				ED7095302691680A00E78CC9 /* IntentsUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -137,6 +185,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		ED7095432691684300E78CC9 /* Temperature Submission IntentUI */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ED7095512691684300E78CC9 /* Build configuration list for PBXNativeTarget "Temperature Submission IntentUI" */;
+			buildPhases = (
+				ED7095402691684300E78CC9 /* Sources */,
+				ED7095412691684300E78CC9 /* Frameworks */,
+				ED7095422691684300E78CC9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Temperature Submission IntentUI";
+			productName = "Temperature Submission IntentUI";
+			productReference = ED7095442691684300E78CC9 /* Temperature Submission IntentUI.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		EDA8A57C24A61478004B891F /* Temperature Submission */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = EDA8A59124A61482004B891F /* Build configuration list for PBXNativeTarget "Temperature Submission" */;
@@ -150,6 +215,7 @@
 			);
 			dependencies = (
 				EDA8A5C124A6304B004B891F /* PBXTargetDependency */,
+				ED70954E2691684300E78CC9 /* PBXTargetDependency */,
 			);
 			name = "Temperature Submission";
 			productName = "Temperature Submission";
@@ -179,10 +245,13 @@
 		EDA8A57524A61478004B891F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1150;
+				LastSwiftUpdateCheck = 1250;
 				LastUpgradeCheck = 1240;
 				ORGANIZATIONNAME = "Wern Jie Lim";
 				TargetAttributes = {
+					ED7095432691684300E78CC9 = {
+						CreatedOnToolsVersion = 12.5.1;
+					};
 					EDA8A57C24A61478004B891F = {
 						CreatedOnToolsVersion = 11.5;
 					};
@@ -206,11 +275,20 @@
 			targets = (
 				EDA8A57C24A61478004B891F /* Temperature Submission */,
 				EDA8A5BA24A6304B004B891F /* Temperature Submission Intent */,
+				ED7095432691684300E78CC9 /* Temperature Submission IntentUI */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		ED7095422691684300E78CC9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ED70954B2691684300E78CC9 /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EDA8A57B24A61478004B891F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -231,14 +309,25 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		ED7095402691684300E78CC9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ED7095482691684300E78CC9 /* IntentViewController.swift in Sources */,
+				ED7095572691693700E78CC9 /* WebViewInjector.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EDA8A57924A61478004B891F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED7095592691B83A00E78CC9 /* SnapshotsViewController.swift in Sources */,
 				EDA8A58524A61478004B891F /* ViewController.swift in Sources */,
 				EDA8A58124A61478004B891F /* AppDelegate.swift in Sources */,
 				EDB3B2AB255B7E8E00F0F866 /* TermsViewController.swift in Sources */,
 				EDA8A59524A614C8004B891F /* TemperatureIntents.intentdefinition in Sources */,
+				ED7095552691693700E78CC9 /* WebViewInjector.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -246,6 +335,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED7095562691693700E78CC9 /* WebViewInjector.swift in Sources */,
 				EDA8A5BE24A6304B004B891F /* IntentHandler.swift in Sources */,
 				EDA8A5C724A6348F004B891F /* TemperatureIntents.intentdefinition in Sources */,
 			);
@@ -254,6 +344,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		ED70954E2691684300E78CC9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = ED7095432691684300E78CC9 /* Temperature Submission IntentUI */;
+			targetProxy = ED70954D2691684300E78CC9 /* PBXContainerItemProxy */;
+		};
 		EDA8A5C124A6304B004B891F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = EDA8A5BA24A6304B004B891F /* Temperature Submission Intent */;
@@ -262,6 +357,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		ED7095492691684300E78CC9 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				ED70954A2691684300E78CC9 /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
 		EDA8A58624A61478004B891F /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -281,6 +384,56 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		ED7095522691684300E78CC9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "Temperature Submission IntentUI/Temperature Submission IntentUI.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1.1.1;
+				DEVELOPMENT_TEAM = 2MNM6PUQP4;
+				INFOPLIST_FILE = "Temperature Submission IntentUI/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 13.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.1.1;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.limwernjie.Temperature-Submission.Temperature-Submission-IntentUI";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		ED7095532691684300E78CC9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "Temperature Submission IntentUI/Temperature Submission IntentUI.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1.1.1;
+				DEVELOPMENT_TEAM = 2MNM6PUQP4;
+				INFOPLIST_FILE = "Temperature Submission IntentUI/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 13.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.1.1;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.limwernjie.Temperature-Submission.Temperature-Submission-IntentUI";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		EDA8A58F24A61482004B891F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -404,6 +557,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Temperature Submission/Temperature Submission.entitlements";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1.1.1;
 				DEVELOPMENT_TEAM = 2MNM6PUQP4;
 				INFOPLIST_FILE = "Temperature Submission/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
@@ -411,6 +565,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.limwernjie.Temperature-Submission";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;
@@ -430,6 +585,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Temperature Submission/Temperature Submission.entitlements";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1.1.1;
 				DEVELOPMENT_TEAM = 2MNM6PUQP4;
 				INFOPLIST_FILE = "Temperature Submission/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
@@ -437,6 +593,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.limwernjie.Temperature-Submission";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;
@@ -454,14 +611,17 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "Temperature Submission Intent/Temperature Submission Intent.entitlements";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1.1.1;
 				DEVELOPMENT_TEAM = 2MNM6PUQP4;
 				INFOPLIST_FILE = "Temperature Submission Intent/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
+				MARKETING_VERSION = 1.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.limwernjie.Temperature-Submission.Temperature-Submission-Intent";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -476,14 +636,17 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "Temperature Submission Intent/Temperature Submission Intent.entitlements";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1.1.1;
 				DEVELOPMENT_TEAM = 2MNM6PUQP4;
 				INFOPLIST_FILE = "Temperature Submission Intent/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
+				MARKETING_VERSION = 1.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.limwernjie.Temperature-Submission.Temperature-Submission-Intent";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -496,6 +659,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		ED7095512691684300E78CC9 /* Build configuration list for PBXNativeTarget "Temperature Submission IntentUI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ED7095522691684300E78CC9 /* Debug */,
+				ED7095532691684300E78CC9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		EDA8A57824A61478004B891F /* Build configuration list for PBXProject "Temperature Submission" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
