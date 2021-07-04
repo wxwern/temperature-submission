@@ -296,7 +296,7 @@ class WebViewInjector {
             universalStorage?.synchronize()
             if x {
                 submittingCacheSnapshotTimer?.invalidate()
-                submittingCacheSnapshotTimer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true, block: { t in
+                submittingCacheSnapshotTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { t in
                     self.cacheSnapshot()
                 })
             } else {
@@ -487,8 +487,13 @@ class WebViewInjector {
     
     // MARK: WebView Snapshot Caching Functions
     private func getWebViewSnapshot(completion: @escaping (UIImage?) -> ()) {
-        webView.takeSnapshot(with: nil) { image, err in
+        let snapshotConfig = WKSnapshotConfiguration()
+        snapshotConfig.snapshotWidth = 480
+        let cTB = webView.clipsToBounds
+        webView.clipsToBounds = false
+        webView.takeSnapshot(with: snapshotConfig) { image, err in
             completion(image)
+            self.webView.clipsToBounds = cTB
         }
     }
     public func clearCachedSnapshot() {
@@ -500,7 +505,10 @@ class WebViewInjector {
     }
     public func cacheSnapshot() {
         getWebViewSnapshot() { image in
-            universalStorage?.set(image?.pngData()?.base64EncodedString(), forKey: "webViewSnapshot")
+            print("snapshot \(Date())")
+            let imgData = image?.jpegData(compressionQuality: 0.0)
+            let imgStr = imgData?.base64EncodedString()
+            universalStorage?.set(imgStr, forKey: "webViewSnapshot")
             universalStorage?.set(Date().timeIntervalSince1970, forKey: "webViewSnapshotDate")
             universalStorage?.synchronize()
         }
