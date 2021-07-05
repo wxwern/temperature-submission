@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ED5826CF2692C1C40000C07D /* NotificationHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5826CE2692C1C40000C07D /* NotificationHelpers.swift */; };
+		ED5826D02692C1FD0000C07D /* NotificationHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5826CE2692C1C40000C07D /* NotificationHelpers.swift */; };
+		ED5826D12692C1FD0000C07D /* NotificationHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5826CE2692C1C40000C07D /* NotificationHelpers.swift */; };
 		ED7095452691684300E78CC9 /* IntentsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED7095302691680A00E78CC9 /* IntentsUI.framework */; };
 		ED7095482691684300E78CC9 /* IntentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7095472691684300E78CC9 /* IntentViewController.swift */; };
 		ED70954B2691684300E78CC9 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED7095492691684300E78CC9 /* MainInterface.storyboard */; };
@@ -61,6 +64,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		ED5826CE2692C1C40000C07D /* NotificationHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationHelpers.swift; sourceTree = "<group>"; };
 		ED7095302691680A00E78CC9 /* IntentsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IntentsUI.framework; path = System/Library/Frameworks/IntentsUI.framework; sourceTree = SDKROOT; };
 		ED7095442691684300E78CC9 /* Temperature Submission IntentUI.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Temperature Submission IntentUI.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED7095472691684300E78CC9 /* IntentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentViewController.swift; sourceTree = "<group>"; };
@@ -129,6 +133,7 @@
 			children = (
 				EDA8A59424A614C8004B891F /* TemperatureIntents.intentdefinition */,
 				ED7095542691693700E78CC9 /* WebViewInjector.swift */,
+				ED5826CE2692C1C40000C07D /* NotificationHelpers.swift */,
 				EDA8A57F24A61478004B891F /* Temperature Submission */,
 				EDA8A5BC24A6304B004B891F /* Temperature Submission Intent */,
 				ED7095462691684300E78CC9 /* Temperature Submission IntentUI */,
@@ -314,6 +319,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ED7095482691684300E78CC9 /* IntentViewController.swift in Sources */,
+				ED5826D12692C1FD0000C07D /* NotificationHelpers.swift in Sources */,
 				ED7095572691693700E78CC9 /* WebViewInjector.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -323,6 +329,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ED7095592691B83A00E78CC9 /* SnapshotsViewController.swift in Sources */,
+				ED5826CF2692C1C40000C07D /* NotificationHelpers.swift in Sources */,
 				EDA8A58524A61478004B891F /* ViewController.swift in Sources */,
 				EDA8A58124A61478004B891F /* AppDelegate.swift in Sources */,
 				EDB3B2AB255B7E8E00F0F866 /* TermsViewController.swift in Sources */,
@@ -337,6 +344,7 @@
 			files = (
 				ED7095562691693700E78CC9 /* WebViewInjector.swift in Sources */,
 				EDA8A5BE24A6304B004B891F /* IntentHandler.swift in Sources */,
+				ED5826D02692C1FD0000C07D /* NotificationHelpers.swift in Sources */,
 				EDA8A5C724A6348F004B891F /* TemperatureIntents.intentdefinition in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -389,7 +397,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "Temperature Submission IntentUI/Temperature Submission IntentUI.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.1.2;
+				CURRENT_PROJECT_VERSION = 1.1.3;
 				DEVELOPMENT_TEAM = 2MNM6PUQP4;
 				INFOPLIST_FILE = "Temperature Submission IntentUI/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -399,7 +407,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.1.2;
+				MARKETING_VERSION = 1.1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.limwernjie.Temperature-Submission.Temperature-Submission-IntentUI";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -414,7 +422,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "Temperature Submission IntentUI/Temperature Submission IntentUI.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.1.2;
+				CURRENT_PROJECT_VERSION = 1.1.3;
 				DEVELOPMENT_TEAM = 2MNM6PUQP4;
 				INFOPLIST_FILE = "Temperature Submission IntentUI/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -424,7 +432,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.1.2;
+				MARKETING_VERSION = 1.1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.limwernjie.Temperature-Submission.Temperature-Submission-IntentUI";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -557,7 +565,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Temperature Submission/Temperature Submission.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.1.2;
+				CURRENT_PROJECT_VERSION = 1.1.3;
 				DEVELOPMENT_TEAM = 2MNM6PUQP4;
 				INFOPLIST_FILE = "Temperature Submission/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
@@ -565,7 +573,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.2;
+				MARKETING_VERSION = 1.1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.limwernjie.Temperature-Submission";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;
@@ -585,7 +593,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Temperature Submission/Temperature Submission.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.1.2;
+				CURRENT_PROJECT_VERSION = 1.1.3;
 				DEVELOPMENT_TEAM = 2MNM6PUQP4;
 				INFOPLIST_FILE = "Temperature Submission/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
@@ -593,7 +601,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.2;
+				MARKETING_VERSION = 1.1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.limwernjie.Temperature-Submission";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;
@@ -611,7 +619,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "Temperature Submission Intent/Temperature Submission Intent.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.1.2;
+				CURRENT_PROJECT_VERSION = 1.1.3;
 				DEVELOPMENT_TEAM = 2MNM6PUQP4;
 				INFOPLIST_FILE = "Temperature Submission Intent/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -621,7 +629,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.1.2;
+				MARKETING_VERSION = 1.1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.limwernjie.Temperature-Submission.Temperature-Submission-Intent";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -636,7 +644,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "Temperature Submission Intent/Temperature Submission Intent.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.1.2;
+				CURRENT_PROJECT_VERSION = 1.1.3;
 				DEVELOPMENT_TEAM = 2MNM6PUQP4;
 				INFOPLIST_FILE = "Temperature Submission Intent/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -646,7 +654,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.1.2;
+				MARKETING_VERSION = 1.1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.limwernjie.Temperature-Submission.Temperature-Submission-Intent";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;

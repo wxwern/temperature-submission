@@ -20,6 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         }
         UNUserNotificationCenter.current().delegate = self
         clearNotifications()
+        UIApplication.shared.applicationIconBadgeNumber = 0
         return true
     }
 
@@ -32,7 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             if let tempStr = temp?.stringValue {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                     if let vc = homeVC {
-                        if vc.webViewInjector?.submitting == false {
+                        if let wvi = vc.webViewInjector, !wvi.submitting || wvi.submissionTaskNotResponding {
                             vc.webViewInjector?.performAutoSubmissionAll(temp: tempStr)
                         } else {
                             vc.showSubmissionSnapshot()
@@ -47,6 +48,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     
     func applicationWillEnterForeground(_ application: UIApplication) {
         clearNotifications()
+        UIApplication.shared.applicationIconBadgeNumber = 0
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void)
@@ -54,36 +56,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         completionHandler([.alert, .badge, .sound])
     }
     
-}
-
-func postNotification(message: String, title: String, timeInterval: TimeInterval = 0.5, count: Int = 0, critical: Bool = false, id: String? = nil) {
-    //creating the notification content
-    let content = UNMutableNotificationContent()
-    content.title = title
-    content.subtitle = ""
-    content.body = message
-    content.badge = count as NSNumber
-    
-    //Attempt to play critical sound if possible. Requires critical alert entitlement from Apple to work.
-    if critical {
-        content.sound = .defaultCriticalSound(withAudioVolume: 1.0)
-    }
-    
-    //getting the notification trigger
-    let trigger = UNTimeIntervalNotificationTrigger(timeInterval: timeInterval, repeats: false)
-    //getting the notification request
-    let request = UNNotificationRequest(identifier: id ?? UUID.init().uuidString, content: content, trigger: trigger)
-    //adding the notification to notification center
-    UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
-}
-
-func clearNotifications(id: String) {
-    UNUserNotificationCenter.current().removeDeliveredNotifications(withIdentifiers: [id])
-    UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [id])
-}
-func clearNotifications() {
-    UIApplication.shared.applicationIconBadgeNumber = 1
-    let notifications =  UNUserNotificationCenter.current()
-    notifications.removeAllDeliveredNotifications()
-    UIApplication.shared.applicationIconBadgeNumber = 0
 }

@@ -37,7 +37,13 @@ public let termsList = [
 // MARK: - WebViewInjector helper class
 class WebViewInjector {
     
-    let DEBUG = false
+    var DEBUG : Bool {
+        #if targetEnvironment(simulator)
+        return true
+        #else
+        return false
+        #endif
+    }
     
     // MARK: Initialisation
     let webView: WKWebView
@@ -121,7 +127,7 @@ class WebViewInjector {
             console.log('filling in time measured')
             let questions = document.getElementsByClassName('__question__');
             questions[0].getElementsByTagName('input')[0].click(); //temperature taken 5 minutes ago
-        }, 500);
+        }, 250);
         setTimeout(function() {
             console.log('filling in temp and symptoms')
             let questions = document.getElementsByClassName('__question__');
@@ -129,7 +135,7 @@ class WebViewInjector {
             setNativeValue(questions[1].getElementsByTagName('input')[0], TEMPERATURE_PLACEHOLDER); //fill in temperature
             questions[2].getElementsByTagName('input')[1].click(); //no cough
             questions[3].getElementsByTagName('input')[1].click(); //no runny nose
-        }, 1000);
+        }, 750);
         setTimeout(function() {
             console.log('attempting to go to next page')
             let nextButton = Array.from(
@@ -137,7 +143,7 @@ class WebViewInjector {
                         .getElementsByTagName('button')
             ).find(ele => ele.ariaLabel == 'Next');
             simulateMouseClick(nextButton); //click next button
-        }, 2000);
+        }, 1000);
         setTimeout(function() {
             console.log('filling in last page')
             let questions = document.getElementsByClassName('__question__');
@@ -146,7 +152,7 @@ class WebViewInjector {
             console.log('submitting')
             let submit = document.querySelector('button.__submit-button__');
             submit.click();
-        }, 2500);
+        }, 1500);
         """,
             TARGET_LINK_2:
         """
@@ -194,15 +200,15 @@ class WebViewInjector {
             console.log('submitting')
             let btn = document.querySelector('button[title="Submit"]');
             btn.click();
-        }, 1500);
+        }, 1000);
         """
         ]
     }
     
     // MARK: Internal Helper Functions
-    private func hasKeyword(_ keyword: String, completion: @escaping (Bool) -> ()) {
+    func hasKeyword(_ keyword: String, completion: @escaping (Bool) -> ()) {
         
-        let js_str = "[document.body.innerText.toLowerCase().includes('" +  keyword.lowercased().replacingOccurrences(of: "'", with: "\\'").replacingOccurrences(of: "\\", with: "\\\\") + "')]"
+        let js_str = "[document.body.innerText.toLowerCase().includes(\"" +  keyword.lowercased().replacingOccurrences(of: "\\", with: "\\\\").replacingOccurrences(of: "\"", with: "\\\"") + "\")]"
         
         self.webView.evaluateJavaScript(js_str) { (res, err) in
             
@@ -222,29 +228,29 @@ class WebViewInjector {
         }
         
     }
-    private func hasAnyOfKeywords(_ keywords: [String], completion: @escaping (Bool) -> ()) {
+    func hasAnyOfKeywords(_ keywords: [String], completion: @escaping (String?, Bool) -> ()) {
         if keywords.count == 0 {
-            completion(false)
+            completion(nil, false)
             return
         }
         
         self.hasKeyword(keywords.first!) { success in
             if success {
-                completion(true)
+                completion(keywords.first!, true)
                 return
             }
             self.hasAnyOfKeywords(Array<String>(keywords.dropFirst()), completion: completion)
         }
     }
     
-    private func waitForKeyword(_ keyword: String, terminateIfKeywords terminationKeywords: [String] = [], timeout: Int = 15, completion: @escaping (Bool) -> ()) {
-        if timeout <= 0 {
+    func waitForKeyword(_ keyword: String, terminateIfKeywords terminationKeywords: [String] = [], timeout: Double = 15, completion: @escaping (Bool) -> ()) {
+        if round(timeout*100) <= 0 {
             completion(false)
             return
         }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            let js_str = "[document.body.innerText.toLowerCase().includes('" +  keyword.lowercased().replacingOccurrences(of: "'", with: "\\'").replacingOccurrences(of: "\\", with: "\\\\") + "')]"
-            
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+            let js_str = "[document.body.innerText.toLowerCase().includes(\"" +  keyword.lowercased().replacingOccurrences(of: "\\", with: "\\\\").replacingOccurrences(of: "\"", with: "\\\"") + "\")]"
+
             self.webView.evaluateJavaScript(js_str) { (res, err) in
                 
                 if let res = res as? [Any],
@@ -264,13 +270,13 @@ class WebViewInjector {
                     print("retrying...")
                 }
                 
-                self.hasAnyOfKeywords(terminationKeywords) { (shouldTerminate) in
+                self.hasAnyOfKeywords(terminationKeywords) { (_ ,shouldTerminate)  in
                     if shouldTerminate {
                         completion(false)
                     } else {
                         self.waitForKeyword(keyword,
                                             terminateIfKeywords: terminationKeywords,
-                                            timeout: timeout - 1,
+                                            timeout: timeout - 0.25,
                                             completion: completion)
                     }
                 }
@@ -287,42 +293,55 @@ class WebViewInjector {
     
     
     // MARK: Temperature Submission Functions
+    public private(set) var success: Bool?
+    
+    private var submittingWatchdogTimer: Timer?
+    public class var submitting: Bool { return universalStorage?.bool(forKey: "submitting") == true }
     public private(set) var submitting: Bool {
         get {
-            return universalStorage?.bool(forKey: "submitting") == true
+            return WebViewInjector.submitting
         }
         set(x) {
             universalStorage?.set(x, forKey: "submitting")
             universalStorage?.synchronize()
+            
             if x {
-                submittingCacheSnapshotTimer?.invalidate()
-                submittingCacheSnapshotTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { t in
+                submittingWatchdogTimer?.invalidate()
+                clearCachedSnapshot()
+                universalStorage?.set(Date().timeIntervalSince1970, forKey: "webViewSnapshotDate")
+                
+                submittingWatchdogTimer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true, block: { t in
                     self.cacheSnapshot()
+                    
+                    clearNotifications(id: "AUTOSUB_NOT_RESPONDING")
+                    if self.submitting {
+                        postNotification(message: "Auto-submission task did not respond to submission status checks.", title: "Submission might have FAILED!", timeInterval: 3, count: 1, critical: true, id: "AUTOSUB_NOT_RESPONDING")
+                    }
                 })
+                submittingWatchdogTimer?.fire()
             } else {
-                submittingCacheSnapshotTimer?.fire()
-                submittingCacheSnapshotTimer?.invalidate()
-                submittingCacheSnapshotTimer = nil
+                submittingWatchdogTimer?.fire()
+                submittingWatchdogTimer?.invalidate()
+                submittingWatchdogTimer = nil
             }
         }
     }
-    public private(set) var success: Bool?
-    private var submittingCacheSnapshotTimer: Timer?
-    
-    public func performAutoSubmissionAll(temp: String) {
+    public var submissionTaskNotResponding: Bool { return WebViewInjector.submissionTaskNotResponding }
+    public class var submissionTaskNotResponding: Bool {
         if submitting {
             let lastUpdate = retrieveCachedSnapshotDate()
-            if lastUpdate == nil || -lastUpdate!.timeIntervalSinceNow >= 5 {
-                
-                print("bypassing possibly terminated submission with lurking lock, since no snapshot updates are present")
-                submitting = false
-                
-            } else {
-                
-                print("submission in progress, ignoring attempt")
-                return
+            if lastUpdate == nil || -lastUpdate!.timeIntervalSinceNow >= 3 {
+                return true
             }
         }
+        return false
+    }
+    
+    public var canSubmit: Bool { return WebViewInjector.canSubmit }
+    public class var canSubmit: Bool { return !submitting || submissionTaskNotResponding }
+    
+    public func performAutoSubmissionAll(temp: String) {
+        if !canSubmit { return }
         submitting = true
         success = nil
         self.performAutoSubmission(url: self.TARGET_LINK_1, temp: temp) { (success) in
@@ -335,8 +354,8 @@ class WebViewInjector {
                 let d = calendar.component(.day, from: date)
                 let h = calendar.component(.hour, from: date)
                 
-                //if y == 2021 && m == 5 && h < 12 && ([19,20,21,24,25,27,28].contains(d) || self.DEBUG) {
-                if y == 2021 && h < 12 && ((d == 30 && m == 6) || (d == 1 && m == 7) || self.DEBUG) {
+                //if (y == 2021 && m == 5 && h < 12 && [19,20,21,24,25,27,28].contains(d)) || self.DEBUG {
+                if (y == 2021 && h < 12 && ((d == 30 && m == 6) || (d == 1 && m == 7))) || self.DEBUG {
                     self.performAutoSubmission(url: self.TARGET_LINK_2, temp: temp) { success in
                         self.success = success
                         self.submitting = false
@@ -394,6 +413,8 @@ class WebViewInjector {
         //prepare to run in the background
         let bgTask = self.application?.beginBackgroundTask {
             postNotification(message: "Unable to run in the background for long enough.", title: "Submission FAILED!", critical: true)
+            clearNotifications(id: "AUTOSUB_NOT_RESPONDING")
+            
             self.application?.isIdleTimerDisabled = false
             abort()
         }
@@ -416,18 +437,26 @@ class WebViewInjector {
             self.infoLabel?.text = AUTO
             print("waiting for temp keyword")
             
-            self.waitForKeyword("temperature", terminateIfKeywords: ["not accepting responses", "has already been submitted"], timeout: 20) { success in
+            let NOT_ACCEPTING = "not accepting responses"
+            let ALR_SUBMITTED = "has already been submitted"
+            let NO_LOGIN      = "t access your account?"
+            self.waitForKeyword("temperature", terminateIfKeywords: [NOT_ACCEPTING, ALR_SUBMITTED, NO_LOGIN], timeout: 20) { success in
                 if !success {
                     print("temp keyword not found")
-                    self.webView.evaluateJavaScript("[document.body.innerHTML]", completionHandler: { x, e in
-                        print((x as? [String])?.first ?? "")
-                    })
                     clearNotifications(id: "IN_PROGRESS_NOTIF")
                     
-                    self.hasAnyOfKeywords(["not accepting responses", "has already been submitted"], completion: { formClosed in
+                    self.hasAnyOfKeywords([NOT_ACCEPTING, ALR_SUBMITTED, NO_LOGIN], completion: { keyword, formClosed in
                         if formClosed {
-                            _ = self.alert("Failed", "The form is not open.")
-                            postNotification(message: "The form is not open.", title: "Submission to \(EXEC_DESC) FAILED!", count: 1, critical: true)
+                            switch keyword {
+                                case ALR_SUBMITTED:
+                                    postNotification(message: "Your reading has already been submitted previously.", title: "Previous submission to \(EXEC_DESC) present!", count: 1)
+                                case NO_LOGIN:
+                                    _ = self.alert("Failed", "You need to login first.")
+                                    postNotification(message: "You need to login to continue.", title: "Submission to \(EXEC_DESC) FAILED!", count: 1, critical: true)
+                                default:
+                                    _ = self.alert("Failed", "The form is not open.")
+                                    postNotification(message: "The form is not open.", title: "Submission to \(EXEC_DESC) FAILED!", count: 1, critical: true)
+                            }
                         } else {
                             _ = self.alert("Failed", "We can't load the form.")
                             postNotification(message: "The form couldn't be loaded.", title: "Submission to \(EXEC_DESC) FAILED!", count: 1, critical: true)
@@ -487,13 +516,15 @@ class WebViewInjector {
     
     // MARK: WebView Snapshot Caching Functions
     private func getWebViewSnapshot(completion: @escaping (UIImage?) -> ()) {
-        let snapshotConfig = WKSnapshotConfiguration()
-        snapshotConfig.snapshotWidth = 480
-        let cTB = webView.clipsToBounds
-        webView.clipsToBounds = false
-        webView.takeSnapshot(with: snapshotConfig) { image, err in
-            completion(image)
-            self.webView.clipsToBounds = cTB
+        DispatchQueue.main.async {
+            let snapshotConfig = WKSnapshotConfiguration()
+            snapshotConfig.snapshotWidth = 480
+            let cTB = self.webView.clipsToBounds
+            self.webView.clipsToBounds = false
+            self.webView.takeSnapshot(with: snapshotConfig) { image, err in
+                completion(image)
+                self.webView.clipsToBounds = cTB
+            }
         }
     }
     public func clearCachedSnapshot() {
@@ -532,6 +563,85 @@ class WebViewInjector {
            return Date(timeIntervalSince1970: dateTI)
         }
         return nil
+    }
+    
+    // MARK: WebView cookies storage
+    public func saveCookies() {
+        DispatchQueue.main.async {
+            self.webView.configuration.websiteDataStore.httpCookieStore.getAllCookies { cookies in
+                let cookiesFormatted = cookies.map({ c -> [String: Any] in
+                    var strDict: [String: Any] = [:]
+                    let properties = c.properties ?? [:]
+                    for key in properties.keys {
+                        strDict[key.rawValue] = properties[key]
+                    }
+                    return strDict
+                })
+                universalStorage?.set(cookiesFormatted, forKey: "cookies")
+                universalStorage?.synchronize()
+            }
+        }
+    }
+    public func eraseCookies() {
+        DispatchQueue.main.async {
+            self.webView.configuration.websiteDataStore.httpCookieStore.getAllCookies { cookies in
+                for cookie in cookies {
+                    self.webView.configuration.websiteDataStore.httpCookieStore.delete(cookie, completionHandler: nil)
+                }
+            }
+            universalStorage?.removeObject(forKey: "cookies")
+            universalStorage?.synchronize()
+        }
+    }
+
+    public class func obtainCookiesConfig(completion: @escaping (WKWebViewConfiguration?) -> ()) {
+        let config = WKWebViewConfiguration()
+        if let cookiesData = universalStorage?.object(forKey: "cookies") {
+            guard var cookiesRaw = cookiesData as? [[String : Any]] else {
+                print("Cookies format invalid, cannot read")
+                DispatchQueue.main.async { completion(nil) }
+                return
+            }
+            
+            print("Cookies obtained: \(cookiesRaw.count)")
+            func insertCookie() {
+                if cookiesRaw.isEmpty {
+                    DispatchQueue.main.async { completion(config) }
+                    return
+                }
+                
+                let cookieRaw = cookiesRaw.first!
+                var cookieProperties: [HTTPCookiePropertyKey : Any] = [:]
+                for key in cookieRaw.keys {
+                    cookieProperties[HTTPCookiePropertyKey(key)] = cookieRaw[key]
+                }
+                if let cookieObj = HTTPCookie(properties: cookieProperties) {
+                    config.websiteDataStore.httpCookieStore.setCookie(cookieObj) {
+                        cookiesRaw = Array<[String : Any]>(cookiesRaw.dropFirst())
+                        insertCookie()
+                    }
+                }
+            }
+            
+            insertCookie()
+        } else {
+            print("No cookies found! May not work!")
+            DispatchQueue.main.async { completion(nil) }
+        }
+    }
+    public class func initHeadless(requireCookies: Bool = false, _ result: @escaping (WebViewInjector?) -> ()) {
+        obtainCookiesConfig { config in
+            if requireCookies && config == nil {
+                result(nil)
+            }
+            result(WebViewInjector(
+                    WKWebView(frame: .init(x: 0, y: 0, width: 1280, height: 800),
+                              configuration: config ?? WKWebViewConfiguration()
+                    ),
+                    nil,
+                    nil
+            ))
+        }
     }
 }
 

@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ObA-dk-sSI">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -15,27 +16,39 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="150"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="vXF-fI-QHM">
-                                <rect key="frame" x="150" y="65" width="20" height="20"/>
-                            </activityIndicatorView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vHw-d9-Cfz">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.84999999999999998" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vHw-d9-Cfz">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="150"/>
                             </imageView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="vXF-fI-QHM">
+                                <rect key="frame" x="292" y="122" width="20" height="20"/>
+                            </activityIndicatorView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aa8-P9-ed8">
+                                <rect key="frame" x="8" y="57" width="304" height="36"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="4PN-XC-lEE"/>
                         <constraints>
+                            <constraint firstItem="Aa8-P9-ed8" firstAttribute="centerX" secondItem="zMn-AG-sqS" secondAttribute="centerX" id="800-xO-c7i"/>
+                            <constraint firstItem="4PN-XC-lEE" firstAttribute="trailing" secondItem="vXF-fI-QHM" secondAttribute="trailing" constant="8" id="A2V-yD-HPa"/>
                             <constraint firstItem="vHw-d9-Cfz" firstAttribute="top" secondItem="zMn-AG-sqS" secondAttribute="top" id="A6o-JW-2Fb"/>
+                            <constraint firstItem="4PN-XC-lEE" firstAttribute="trailing" secondItem="Aa8-P9-ed8" secondAttribute="trailing" constant="8" id="C12-Gs-iCa"/>
                             <constraint firstItem="4PN-XC-lEE" firstAttribute="bottom" secondItem="vHw-d9-Cfz" secondAttribute="bottom" id="YXt-Je-zsV"/>
                             <constraint firstItem="vHw-d9-Cfz" firstAttribute="leading" secondItem="4PN-XC-lEE" secondAttribute="leading" id="cSQ-Y1-KL1"/>
-                            <constraint firstItem="vXF-fI-QHM" firstAttribute="centerY" secondItem="zMn-AG-sqS" secondAttribute="centerY" id="lo4-t2-94u"/>
+                            <constraint firstItem="Aa8-P9-ed8" firstAttribute="centerY" secondItem="zMn-AG-sqS" secondAttribute="centerY" id="k27-h6-rMs"/>
                             <constraint firstItem="4PN-XC-lEE" firstAttribute="trailing" secondItem="vHw-d9-Cfz" secondAttribute="trailing" id="ob1-bq-bBW"/>
-                            <constraint firstItem="vXF-fI-QHM" firstAttribute="centerX" secondItem="zMn-AG-sqS" secondAttribute="centerX" id="usN-9k-Bcy"/>
+                            <constraint firstItem="Aa8-P9-ed8" firstAttribute="leading" secondItem="4PN-XC-lEE" secondAttribute="leading" constant="8" id="q7L-H7-SG0"/>
+                            <constraint firstItem="4PN-XC-lEE" firstAttribute="bottom" secondItem="vXF-fI-QHM" secondAttribute="bottom" constant="8" id="qCJ-X7-HOs"/>
                         </constraints>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="150"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="vXF-fI-QHM" id="z0s-s6-TNE"/>
                         <outlet property="imageView" destination="vHw-d9-Cfz" id="xK2-6b-8M8"/>
+                        <outlet property="infoLabel" destination="Aa8-P9-ed8" id="mIQ-SN-0VJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X47-rx-isc" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -131,6 +131,9 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
                 }))
             }
         }
+        a.addAction(UIAlertAction(title: "Logout from MS Forms", style: .destructive, handler: { action in
+            self.webView.load(URLRequest(url: URL(string: "https://www.office.com/estslogout?ru=%2F%3Fref%3Dlogout")!))
+        }))
         
         #if !targetEnvironment(macCatalyst)
         if self.addToSiriButton?.isHidden == true {
@@ -160,19 +163,14 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITe
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         if webView.url?.absoluteString.contains("forms.office.com") == true {
             print("Saving cookies for Siri Extension use")
-            webView.configuration.websiteDataStore.httpCookieStore.getAllCookies { cookies in
-                let cookiesFormatted = cookies.map({ c -> [String: Any] in
-                    var strDict: [String: Any] = [:]
-                    let properties = c.properties ?? [:]
-                    for key in properties.keys {
-                        strDict[key.rawValue] = properties[key]
-                    }
-                    return strDict
-                })
-                universalStorage?.set(cookiesFormatted, forKey: "cookies")
-                universalStorage?.synchronize()
-            }
+            webViewInjector?.saveCookies()
         }
+        
+        webViewInjector?.hasKeyword("you signed out", completion: { signedOut in
+            if signedOut {
+                self.webViewInjector?.eraseCookies()
+            }
+        })
     }
 
 }

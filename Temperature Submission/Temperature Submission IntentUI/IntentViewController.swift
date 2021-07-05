@@ -12,22 +12,44 @@ import WebKit
 
 class IntentViewController: UIViewController, INUIHostedViewControlling {
     
+    @IBOutlet var activityIndicator: UIActivityIndicatorView!
     @IBOutlet var imageView: UIImageView!
+    @IBOutlet var infoLabel: UILabel!
     
     var imageViewTimer: Timer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        self.imageView.image = nil
+        self.infoLabel.text = nil
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         imageViewTimer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true, block: { t in
-            if self.imageView != nil {
-                self.imageView.image = WebViewInjector.retrieveCachedSnapshot()
+            if WebViewInjector.submissionTaskNotResponding {
+                self.infoLabel.textColor = .systemRed
+                self.infoLabel.text = "Not Responding\nTap to retry in app"
+            } else {
+                self.infoLabel.textColor = .systemGray
+                self.infoLabel.text = nil
+                if self.imageView != nil {
+                    self.imageView.image = WebViewInjector.retrieveCachedSnapshot()
+                    self.activityIndicator.color = .gray
+                }
+                
+                if WebViewInjector.submitting {
+                    self.activityIndicator.startAnimating()
+                } else {
+                    self.activityIndicator.stopAnimating()
+                }
             }
         })
+        
+        imageViewTimer?.fire()
+        
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -53,15 +75,4 @@ class IntentViewController: UIViewController, INUIHostedViewControlling {
         return CGSize(width: width, height: height)
     }
     
-}
-
-func postNotification(message: String, title: String, timeInterval: TimeInterval = 0.5, count: Int = 0, critical: Bool = false, id: String? = nil) {
-    //stub. incompatible
-}
-
-func clearNotifications(id: String) {
-    //stub. incompatible
-}
-func clearNotifications() {
-    //stub. incompatible
 }

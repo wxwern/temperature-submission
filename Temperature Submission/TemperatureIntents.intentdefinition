@@ -25,6 +25,8 @@
 			<string>Submit body temperature readings semi-automatically</string>
 			<key>INIntentDescriptionID</key>
 			<string>PQ0WlB</string>
+			<key>INIntentInput</key>
+			<string>temperature</string>
 			<key>INIntentLastParameterTag</key>
 			<integer>3</integer>
 			<key>INIntentManagedParameterCombinations</key>
