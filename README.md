@@ -39,7 +39,9 @@ Siri: "What's your body temperature?"
 
 User: "36.9"
 
-Siri: \*submits temperature using the app\*
+Siri: "Ok, sending. Submitting 36.9°C."
+
+\*Submission automation preview shown inline within Siri UI\*
 
 ...
 
