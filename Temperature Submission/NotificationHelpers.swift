@@ -2,8 +2,8 @@
 //  NotificationHelpers.swift
 //  Temperature Submission
 //
-//  Created by Wern Jie Lim on 5/7/21.
-//  Copyright © 2021 Wern Jie Lim. All rights reserved.
+//  Created by Wern on 5/7/21.
+//  Copyright © 2021 Wern. All rights reserved.
 //
 
 import Foundation

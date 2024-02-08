@@ -2,8 +2,8 @@
 //  WebViewInjector.swift
 //  Temperature Submission
 //
-//  Created by Wern Jie Lim on 4/7/21.
-//  Copyright © 2021 Wern Jie Lim. All rights reserved.
+//  Created by Wern on 4/7/21.
+//  Copyright © 2021 Wern. All rights reserved.
 //
 
 import Foundation
@@ -13,7 +13,7 @@ import WebKit
 
 // MARK: - Global References
 public var universalStorage: UserDefaults? {
-    return UserDefaults.init(suiteName: "group.com.limwernjie.TempSubmission")
+    return UserDefaults.init(suiteName: "group.cc.wern.TempSubmission")
 }
 public var AGREES_TERMS: Bool {
     set (x) {
@@ -24,7 +24,7 @@ public var AGREES_TERMS: Bool {
     }
 }
 
-fileprivate let TERMS_KEY = "2LigGKDa" // modify this key when the terms are modified
+fileprivate let TERMS_KEY = "2LigGKDa" // DEV NOTE: modify this key when the terms are modified
 public let termsList = [
     "You must be an\nNUS High BOARDER\nto use the app.",
     "You must also be an\nNUS High STUDENT\nto use the app.",
@@ -354,8 +354,8 @@ class WebViewInjector {
                 let d = calendar.component(.day, from: date)
                 let h = calendar.component(.hour, from: date)
                 
-                //if (y == 2021 && m == 5 && h < 12 && [19,20,21,24,25,27,28].contains(d)) || self.DEBUG {
-                if (y == 2021 && h < 12 && ((d == 30 && m == 6) || (d == 1 && m == 7))) || self.DEBUG {
+                // TODO: User should tweak these dates to correctly reflect the dates where TARGET_LINK_2 should be used.
+                if (y == 2021 && m == 5 && h < 12 && [19,20,21,24,25,27,28].contains(d)) || self.DEBUG {
                     self.performAutoSubmission(url: self.TARGET_LINK_2, temp: temp) { success in
                         self.success = success
                         self.submitting = false

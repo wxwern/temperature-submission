@@ -2,8 +2,8 @@
 //  AppDelegate.swift
 //  Temperature Submission
 //
-//  Created by Wern Jie Lim on 26/6/20.
-//  Copyright © 2020 Wern Jie Lim. All rights reserved.
+//  Created by Wern on 26/6/20.
+//  Copyright © 2020 Wern. All rights reserved.
 //
 
 import UIKit
